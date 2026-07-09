@@ -1,16 +1,16 @@
 package crypto
 
 import (
-	"crypto/sha1"
+	"crypto/sha256"
 	"fmt"
 	"io"
 
 	"github.com/sirupsen/logrus"
 )
 
-// GenerateSHA generates SHA from string
+// GenerateSHA generates a SHA-256 digest from the input string.
 func GenerateSHA(data string) string {
-	hasher := sha1.New()
+	hasher := sha256.New()
 	_, err := io.WriteString(hasher, data)
 	if err != nil {
 		logrus.Errorf("Unable to write data in hash writer %v", err)
